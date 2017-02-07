@@ -10,6 +10,8 @@ export class UserComponent implements OnInit {
   name: string;
   email: string;
   address: address;
+  hobbies: string[];
+  showHobbies: boolean;
 
   constructor() {
     this.name = 'John Doe';
@@ -19,9 +21,15 @@ export class UserComponent implements OnInit {
       city: 'Golden',
       state: 'CO',
     }
+    this.hobbies = ['Music', 'Movies', 'Sports']
+    this.showHobbies = false
   }
 
   ngOnInit() {
+  }
+
+  toggleHobbies() {
+    this.showHobbies = !this.showHobbies
   }
 
 }
