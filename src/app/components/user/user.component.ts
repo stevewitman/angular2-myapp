@@ -32,6 +32,14 @@ export class UserComponent implements OnInit {
     this.showHobbies = !this.showHobbies
   }
 
+  addHobby(hobby) {
+    this.hobbies.push(hobby)
+  }
+
+  deleteHobby(i) {
+    this.hobbies.splice(i , 1)
+  }
+
 }
 
 interface address {
