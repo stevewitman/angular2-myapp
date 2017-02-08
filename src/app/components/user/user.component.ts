@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
+  providers: [ PostsService ]
 })
 export class UserComponent implements OnInit {
 
@@ -12,8 +14,9 @@ export class UserComponent implements OnInit {
   address: address;
   hobbies: string[];
   showHobbies: boolean;
+  posts: Post[];
 
-  constructor() {
+  constructor(private postsService: PostsService) {
     this.name = 'John Doe';
     this.email = 'john@mail.com'
     this.address = {
@@ -21,8 +24,12 @@ export class UserComponent implements OnInit {
       city: 'Golden',
       state: 'CO',
     }
-    this.hobbies = ['Music', 'Movies', 'Sports']
-    this.showHobbies = false
+    this.hobbies = ['Music', 'Movies', 'Sports'];
+    this.showHobbies = false;
+
+    this.postsService.getPosts().subscribe(posts => {
+      this.posts = posts;
+    })
   }
 
   ngOnInit() {
@@ -46,4 +53,10 @@ interface address {
   street: string;
   city: string;
   state: string;
+}
+
+interface post {
+  id: number;
+  title: string;
+  body: string;
 }
