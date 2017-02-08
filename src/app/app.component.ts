@@ -7,11 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  name = 'John Doe';
-  email = 'john@mail.com'
-  address = {
-    street: '12 Main St',
-    city: 'Golden',
-    state: 'CO',
-  }
+
 }
